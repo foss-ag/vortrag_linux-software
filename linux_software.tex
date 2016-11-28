@@ -1,0 +1,190 @@
+% Compile using LuaLaTeX!
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+% Beamer
+
+%% Optionen
+% %\usetheme{Darmstadt} %same as Frankfurt?
+% %\usetheme{Frankfurt} % GTI style, bah
+% %\usetheme{PaloAlto} %hässlich
+% \usetheme{Warsaw} % abgerundet hübsch
+% %\usetheme{Luebeck} % wie warsaw, nur eckiger
+% 
+% \definecolor{beamer@blendedblue}{rgb}{0.5,0.5,0.3} % changed this
+% 
+% \setbeamercolor{normal text}{fg=black,bg=white}
+% \setbeamercolor{alerted text}{fg=red}
+% \setbeamercolor{example text}{fg=green!50!black}
+% 
+% \setbeamercolor{structure}{fg=beamer@blendedblue}
+% 
+% \setbeamercolor{background canvas}{parent=normal text}
+% \setbeamercolor{background}{parent=background canvas}
+% 
+% \setbeamercolor{palette primary}{fg=yellow,bg=yellow} % changed this
+% \setbeamercolor{palette secondary}{use=structure,fg=structure.fg!100!green} % changed this
+% \setbeamercolor{palette tertiary}{use=structure,fg=structure.fg!100!green} % changed this
+
+\usetheme{Luebeck} % or split
+\usecolortheme{grass}
+\setbeamercovered{transparent}
+
+% Bild beim Footer
+%\pgfdeclareimage[height=0.4cm]{university-logo}{images/tud_logo_cmyk.pdf}
+%\logo{\pgfuseimage{university-logo}}
+
+
+% more flexible than babel. Requires LuaLaTeX or XeTeX
+\usepackage{polyglossia}
+\setdefaultlanguage{german}
+
+% PDFLatex? -> fontenc and inputenc
+% T1 for western-europe coding
+%\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+
+% LuaTeX and XeTeX (but LuaLaTeX is cooler) -> fontspec
+\usepackage{fontspec}
+
+% extra symbols
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+
+\usepackage{multimedia}
+
+\usepackage{hyperref}
+% Hyperref Optionen - makeatletter/AtBeginDocument erlaubt uns Titel/Author dynamisch zu setzen, wenn gewollt
+\makeatletter
+	\hypersetup{
+	unicode = true,
+	pdftoolbar = true,
+	pdfmenubar = true,
+	pdffitwindow = true,
+	pdftitle = {\@title},
+	pdfauthor = {\@author},
+	pdfsubject = {FOSS-AG},
+	colorlinks = true,
+	linkcolor = black,
+	citecolor = black,
+	filecolor = black,
+	urlcolor = black
+	}
+\makeatother
+
+
+
+% TOC bei jeder Subsection
+% \AtBeginSubsection[]
+% {
+%   \begin{frame}<beamer>{Outline}
+%     \tableofcontents[currentsection,currentsubsection]
+%   \end{frame}
+% }
+
+% Fußzeile mit Framenumber
+\setbeamertemplate{footline}{
+	\begin{beamercolorbox}[wd=0.5\textwidth,ht=3ex,dp=1.5ex,leftskip=.5em,rightskip=.5em]{author in head/foot}
+		\usebeamerfont{author in head/foot}
+		\insertframenumber/\inserttotalframenumber\hfill%\insertshortauthor
+	\end{beamercolorbox}
+	\vspace*{-4.5ex}\hspace*{0.5\textwidth}
+	\begin{beamercolorbox}[wd=0.5\textwidth,ht=3ex,dp=1.5ex,left,leftskip=.5em]{title in head/foot}
+		\usebeamerfont{title in head/foot}
+		\insertshorttitle
+	\end{beamercolorbox}
+}
+
+
+\usepackage[]{graphicx}
+\usepackage{listings}
+%\lstset{tabsize=2}
+% or
+%\lstset{
+%	numbers = left,
+%	frame = tb,
+%	mathescape = true,
+%	language = Python,
+%	escapeinside = {(*@}{@*)},
+%	emph = {None, True, False, lock, unlock},
+%	emphstyle = {\bfseries},
+%	basicstyle = \ttfamily
+%}
+
+% Bibliographie
+%\usepackage[numbers]{natbib}
+%\usepackage{booktabs}
+%\usepackage{float}
+%\restylefloat{figure}
+
+\usepackage{pdfpages}
+\usepackage{color}
+\definecolor{tuGreen}{rgb}{0.517,0.721,0.094}
+\definecolor{tuOrange}{rgb}{1.0,0.7176,0.0}
+\definecolor{brightGray}{gray}{0.9}
+\definecolor{darkGray}{gray}{0.2}
+\definecolor{white}{rgb}{1,1,1}
+\definecolor{black}{rgb}{0,0,0}
+\definecolor{red}{rgb}{1,0,0}
+
+
+% Abkuerzungen richtig formatieren
+\usepackage{xspace}
+\newcommand{\vgl}{vgl.\xspace} 
+\newcommand{\zB}{z.\,B.\xspace}
+\newcommand{\dahe}{d.\,h.\nolinebreak[4]\xspace}
+\newcommand{\uvm}{u.\,v.\,m.\xspace}
+\newcommand{\usw}{u.\,s.\,w.\xspace}
+\newcommand{\so}{s.\,o.\xspace}
+\newcommand{\sg}{s.\,g.\xspace}
+\newcommand{\iA}{i.\,A.\xspace}
+\newcommand{\sa}{s.\,a.\xspace}
+\newcommand{\su}{s.\,u.\xspace}
+\newcommand{\ua}{u.\,a.\xspace}
+\newcommand{\og}{o.\,g.\xspace}
+\newcommand{\oae}{o.\,\"a.\xspace}
+\newcommand{\oBdA}{o.\,B.\,d.\,A.\xspace}
+\newcommand{\OBdA}{O.\,B.\,d.\,A.\xspace}
+
+\author{
+  Gajda, Michael
+  \texttt{michael.gajda@tu-dortmund.de}
+  \and
+  Test
+  Test
+}
+\date{\today}
+
+\subject{FOSS-AG}
+\title{Linux Software für jeden Zweck}
+\subtitle{\textcolor{black}{F}ree and \textcolor{black}{O}pen \textcolor{black}{S}ource \textcolor{black}{S}oftware \textcolor{black}{- AG}}
+%\institute[TU-Dortmund]{Fakultät für Informatik, Technische Universität Dortmund}
+%%\institute[TU-Dortmund]{Department of computer science, Technische Universität Dortmund}
+
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\include{inc_win_linux}
+
+\include{inc/inc_productivity}
+
+\include{inc/inc_development}
+
+\include{inc/inc_multimedia}
+
+\include{inc/inc_communication}
+
+\include{inc/inc_games}
+
+\include{inc/inc_advanced}
+
+\end{document}
