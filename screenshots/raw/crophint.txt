@@ -1,0 +1,5 @@
+32 top
+49 bottom
+convert texmaker.png -crop 800x572+0+32 +repage out.png
+
+find . -type f -iname "*.png" -exec convert {} -crop 800x572+0+32 +repage ../{} \;

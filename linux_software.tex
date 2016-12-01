@@ -26,10 +26,17 @@
 % \setbeamercolor{palette primary}{fg=yellow,bg=yellow} % changed this
 % \setbeamercolor{palette secondary}{use=structure,fg=structure.fg!100!green} % changed this
 % \setbeamercolor{palette tertiary}{use=structure,fg=structure.fg!100!green} % changed this
+\setbeamerfont{section in sidebar}{size=\fontsize{4}{3}\selectfont}
+\setbeamerfont{subsection in sidebar}{size=\fontsize{6}{5.2}\selectfont}
 
-\usetheme{Luebeck} % or split
+\usetheme{Berkeley} % or split
 \usecolortheme{grass}
 \setbeamercovered{transparent}
+
+% titelbar kleiner
+\makeatletter
+\beamer@headheight=1.2\baselineskip
+\makeatother
 
 % Bild beim Footer
 %\pgfdeclareimage[height=0.4cm]{university-logo}{images/tud_logo_cmyk.pdf}
@@ -55,6 +62,15 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 
+\usepackage{graphicx}
+
+%% generating qr-codes on the fly! Needs a crazy build command
+%\usepackage{pst-barcode, pstricks-add}
+%\usepackage{auto-pst-pdf}
+%% to make it work with pdflatex and lualatex. Needs an extra '-shell-escape' parameter when compiling
+
+% for strike-through text
+\usepackage{soul}
 
 \usepackage{multimedia}
 
@@ -87,21 +103,20 @@
 %   \end{frame}
 % }
 
-% Fußzeile mit Framenumber
-\setbeamertemplate{footline}{
-	\begin{beamercolorbox}[wd=0.5\textwidth,ht=3ex,dp=1.5ex,leftskip=.5em,rightskip=.5em]{author in head/foot}
-		\usebeamerfont{author in head/foot}
-		\insertframenumber/\inserttotalframenumber\hfill%\insertshortauthor
-	\end{beamercolorbox}
-	\vspace*{-4.5ex}\hspace*{0.5\textwidth}
-	\begin{beamercolorbox}[wd=0.5\textwidth,ht=3ex,dp=1.5ex,left,leftskip=.5em]{title in head/foot}
-		\usebeamerfont{title in head/foot}
-		\insertshorttitle
-	\end{beamercolorbox}
-}
+%% Fußzeile mit Framenumber
+%\setbeamertemplate{footline}{
+%	\begin{beamercolorbox}[wd=0.5\textwidth,ht=3ex,dp=1.5ex,leftskip=.5em,rightskip=.5em]{author in head/foot}
+%		\usebeamerfont{author in head/foot}
+%		\insertframenumber/\inserttotalframenumber\hfill%\insertshortauthor
+%	\end{beamercolorbox}
+%	\vspace*{-4.5ex}\hspace*{0.5\textwidth}
+%	\begin{beamercolorbox}[wd=0.5\textwidth,ht=3ex,dp=1.5ex,left,leftskip=.5em]{title in head/foot}
+%		\usebeamerfont{title in head/foot}
+%		\insertshorttitle
+%	\end{beamercolorbox}
+%}
 
 
-\usepackage[]{graphicx}
 \usepackage{listings}
 %\lstset{tabsize=2}
 % or
@@ -140,7 +155,6 @@
 \newcommand{\dahe}{d.\,h.\nolinebreak[4]\xspace}
 \newcommand{\uvm}{u.\,v.\,m.\xspace}
 \newcommand{\usw}{u.\,s.\,w.\xspace}
-\newcommand{\so}{s.\,o.\xspace}
 \newcommand{\sg}{s.\,g.\xspace}
 \newcommand{\iA}{i.\,A.\xspace}
 \newcommand{\sa}{s.\,a.\xspace}
@@ -152,8 +166,8 @@
 \newcommand{\OBdA}{O.\,B.\,d.\,A.\xspace}
 
 \author{
-  Gajda, Michael \\
-  \texttt{michael.gajda@tu-dortmund.de}
+  Gajda, Michael
+  \texttt{(michael.gajda@tu-dortmund.de)}
 }
 \date{\today}
 
@@ -163,14 +177,54 @@
 %\institute[TU-Dortmund]{Fakultät für Informatik, Technische Universität Dortmund}
 %%\institute[TU-Dortmund]{Department of computer science, Technische Universität Dortmund}
 
+% defines new command for software frame template
+\include{inc/template}
 
 \begin{document}
 
+% Titlepage - Hack um Sidebar ohne Inhalt anzuzeigen
+\setbeamertemplate{sidebar left}{}
 \begin{frame}
     \titlepage
 \end{frame}
 
-\include{inc_win_linux}
+\include{inc/inc_intro}
+
+% Sidebarinhalt wieder mit TOC aber ohne author
+\setbeamertemplate{sidebar left}[sidebar theme]
+% Author im Sidebar verstecken
+\makeatletter
+%  \setbeamertemplate{sidebar \beamer@sidebarside}%{sidebar theme}
+%  {
+%    \beamer@tempdim=\beamer@sidebarwidth%
+%    \advance\beamer@tempdim by -6pt%
+%    \insertverticalnavigation{\beamer@sidebarwidth}%
+%    \vfill
+%    \ifx\beamer@sidebarside\beamer@lefttext%
+%    \else%
+%      \usebeamercolor{normal text}%
+%      \llap{\usebeamertemplate***{navigation symbols}\hskip0.1cm}%
+%      \vskip2pt%
+%    \fi%
+%}%
+  \setbeamertemplate{sidebar \beamer@sidebarside}%{sidebar theme}
+  {
+    \beamer@tempdim=\beamer@sidebarwidth%
+    \advance\beamer@tempdim by -6pt%
+    \insertverticalnavigation{\beamer@sidebarwidth}%
+    \vfill
+    \ifx\beamer@sidebarside\beamer@lefttext%
+    \else%
+      \usebeamercolor{normal text}%
+      \llap{\usebeamertemplate***{navigation symbols}\hskip0.1cm}%
+      \vskip2pt%
+    \fi%
+}%
+\makeatother
+
+\include{inc/inc_poll}
+
+\include{inc/inc_win_linux}
 
 \include{inc/inc_productivity}
 
