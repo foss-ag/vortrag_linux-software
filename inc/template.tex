@@ -28,8 +28,8 @@
 	\vspace{0.4cm}
 	{\scriptsize
 	\begin{tabular}{ r l }
-	  Ubuntu, Mint, etc. & \texttt{> apt install #4} \\
-	  Debian & \texttt{> apt install #5} \\
+	  Ubuntu, Mint, etc. & \texttt{> apt install #4}% \\
+%	  Debian & \texttt{> apt install #5} \\
 	\end{tabular}
 	\vspace{0.2cm}
 	
@@ -47,6 +47,41 @@
 % 5 installnotes
 % 6 url
 
+
+\subsection{#1}
+\begin{frame}{#1}
+	\begin{center}
+	#2
+	\end{center}
+	
+	\hspace{-0.4cm}
+	\begin{minipage}{0.42\linewidth}
+	\footnotesize{#3}
+	\end{minipage}%
+	\hspace{0.02cm}
+	\begin{minipage}{0.1\linewidth}
+	\includegraphics[scale=0.3]{screenshots/#4}	
+	\end{minipage}
+	
+	\vspace{0.4cm}
+	{\scriptsize
+	#5
+	\vspace{0.2cm}
+	
+	\texttt{URL: #6}
+	}
+	\vspace{1cm}
+\end{frame}
+}
+
+
+\newcommand{\softwarewinframe}[6]{
+% 1 softwarename
+% 2 titletext
+% 3 longer desc
+% 4 screenshot
+% 5 installnotes
+% 6 url
 
 \subsection{#1}
 \begin{frame}{#1}
