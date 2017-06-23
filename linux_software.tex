@@ -26,17 +26,22 @@
 % \setbeamercolor{palette primary}{fg=yellow,bg=yellow} % changed this
 % \setbeamercolor{palette secondary}{use=structure,fg=structure.fg!100!green} % changed this
 % \setbeamercolor{palette tertiary}{use=structure,fg=structure.fg!100!green} % changed this
-\setbeamerfont{section in sidebar}{size=\fontsize{4}{3}\selectfont}
-\setbeamerfont{subsection in sidebar}{size=\fontsize{5}{4.7}\selectfont}
+%\setbeamerfont{section in sidebar}{size=\fontsize{4}{3}\selectfont}
+%\setbeamerfont{subsection in sidebar}{size=\fontsize{5}{4.7}\selectfont}
+%
+%\usetheme{Berkeley} % or split
+%\usecolortheme{grass}
+%\setbeamercovered{transparent}
 
-\usetheme{Berkeley} % or split
-\usecolortheme{grass}
-\setbeamercovered{transparent}
 
-% titelbar kleiner
-\makeatletter
-\beamer@headheight=1.2\baselineskip
-\makeatother
+%Einbinden des Themes
+\input{Latex_Template/beamerthemeFOSSAG.sty}
+
+
+%% titelbar kleiner
+%\makeatletter
+%\beamer@headheight=1.2\baselineskip
+%\makeatother
 
 % Bild beim Footer
 %\pgfdeclareimage[height=0.4cm]{university-logo}{images/tud_logo_cmyk.pdf}
@@ -166,14 +171,14 @@
 \newcommand{\OBdA}{O.\,B.\,d.\,A.\xspace}
 
 \author{
-  Gajda, Michael
-  \texttt{(michael.gajda@tu-dortmund.de)}
+  FOSS-AG Dortmund \\
+  Vortragender: @draget (Michael Gajda)
 }
 \date{\today}
 
 \subject{FOSS-AG}
-\title{Linux Software für jeden Zweck}
-\subtitle{\textcolor{black}{F}ree and \textcolor{black}{O}pen \textcolor{black}{S}ource \textcolor{black}{S}oftware \textcolor{black}{- AG}}
+\title{Linux Software f. jeden Zweck}
+\subtitle{Linux Days Dortmund \textcolor{black}{2017}}
 %\institute[TU-Dortmund]{Fakultät für Informatik, Technische Universität Dortmund}
 %%\institute[TU-Dortmund]{Department of computer science, Technische Universität Dortmund}
 
@@ -182,8 +187,8 @@
 
 \begin{document}
 
-% Titlepage - Hack um Sidebar ohne Inhalt anzuzeigen
-\setbeamertemplate{sidebar left}{}
+%% Titlepage - Hack um Sidebar ohne Inhalt anzuzeigen
+%\setbeamertemplate{sidebar left}{}
 \begin{frame}
     \titlepage
 \end{frame}
@@ -207,20 +212,20 @@
 %      \vskip2pt%
 %    \fi%
 %}%
-  \setbeamertemplate{sidebar \beamer@sidebarside}%{sidebar theme}
-  {
-    \beamer@tempdim=\beamer@sidebarwidth%
-    \advance\beamer@tempdim by -6pt%
-    \insertverticalnavigation{\beamer@sidebarwidth}%
-    \vfill
-    \ifx\beamer@sidebarside\beamer@lefttext%
-    \else%
-      \usebeamercolor{normal text}%
-      \llap{\usebeamertemplate***{navigation symbols}\hskip0.1cm}%
-      \vskip2pt%
-    \fi%
-}%
-\makeatother
+%  \setbeamertemplate{sidebar \beamer@sidebarside}%{sidebar theme}
+%  {
+%    \beamer@tempdim=\beamer@sidebarwidth%
+%    \advance\beamer@tempdim by -6pt%
+%    \insertverticalnavigation{\beamer@sidebarwidth}%
+%    \vfill
+%    \ifx\beamer@sidebarside\beamer@lefttext%
+%    \else%
+%      \usebeamercolor{normal text}%
+%      \llap{\usebeamertemplate***{navigation symbols}\hskip0.1cm}%
+%      \vskip2pt%
+%    \fi%
+%}%
+%\makeatother
 
 %\include{inc/inc_poll}
 
