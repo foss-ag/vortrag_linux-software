@@ -5,6 +5,7 @@ OpenSCAD
 Audacity
 OpenOffice
 Kodi
+VLC
 ZSNES
 PlayOnLinux
 Steam
